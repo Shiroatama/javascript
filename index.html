@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Form</title>
+        <script language="javascript" type="text/javascript">
+                function verify() {  
+
+                    var pw = document.getElementById("password").value;  
+                    var birthday = document.getElementById("dateOfBirth").value.split('-'); 
+                    var age = 2023 - birthday[0];  
+
+                    if(pw.length < 8 && age < 21) {  
+                        document.getElementById("pwMessage").innerHTML = "Password must be atleast 8 characters";  
+                        document.getElementById("ageMessage").innerHTML = "Minors are not allowed!"; 
+                        return false;  
+                    }  
+
+                    else if(pw.length < 8) {  
+                        document.getElementById("pwMessage").innerHTML = "Password must be atleast 8 characters";  
+                        return false; 
+                    }
+
+                    else if(age < 21){
+                        document.getElementById("ageMessage").innerHTML = "Minors are not allowed!";  
+                        return false;
+                    }
+                    else{
+                        document.getElementById("verified").innerHTML = "Hooray! Your account has been successfully created."; 
+                        document.getElementById("pwMessage").innerHTML = " ";  
+                        document.getElementById("ageMessage").innerHTML = " "; 
+                        return false;
+                    }
+                
+                } 
+                function resett(){
+                    document.getElementById("pwMessage").innerHTML = " ";  
+                    document.getElementById("ageMessage").innerHTML = " "; 
+                    document.getElementById("verified").innerHTML = " "; 
+                }
+        </script>
+    </head>
+    <body>
+        <h1> Form Registration</h1>
+        <span id = "verified" style="color:rgb(28, 218, 85)"> </span> 
+            <form onsubmit = "return verify()">
+                First Name: <input type="text" id = "firstName"/>
+                <br>
+                <br>
+                Last Name: <input type="text" id = "lastName"/>
+                <br>
+                <br>
+                Nick Name: <input type="text" id = "nickName"/>
+                <br>
+                <br>
+                Email: <input type="email" id = "email"/>
+                <br>
+                <br>
+                Password: <input type="password" id = "password"/>
+                <span id = "pwMessage" style="color:red"> </span> 
+                <br>
+                <br>
+                Date of Birth: <input type="date" id = "dateOfBirth" placeholder="mm/dd/yyyy"/>
+                <span id = "ageMessage" style="color:red"> </span> 
+                <br>
+                <br>
+                Gender: 
+                <input type="radio" id="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other">
+                <label for="other">Other</label>
+                <br>
+                <br>
+                Mobile: <input type="number" id = "mobileNumber"/>
+                <br>
+                <br>
+                Address: <input type="text" id = "address"/>
+                <br>
+                <br>
+                <input type="reset" value="reset" onclick="resett()"/>
+                <input type="submit" value="submit" />
+            </form>
+        
+    </body>
+</html>
